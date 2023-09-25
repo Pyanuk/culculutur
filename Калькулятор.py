@@ -1,9 +1,7 @@
 import math
 
-
 def calculator():
-    print("Калькулятор")
-    print("Выберите номер операции:")
+    print("Выберите операцию:")
     print("1. Сложение")
     print("2. Вычитание")
     print("3. Умножение")
@@ -16,65 +14,84 @@ def calculator():
     print("10. Тангенс")
     print("11. Выход")
 
-    operation = input("Введите номер операции: ")
+    operation = input("Введите номер операции:")
+    if operation in ('1', '2', '3', '4','5'):
+        while True:
+            try:
+                number1 = int(input("Введите первое число: "))
+                number2 = int(input("Введите второе число: "))
+                break
+            except ValueError:
+                print("Invalid")
+    elif operation in ('6','7','8','9','10'):
+        while True:
+            try:
+                number= int(input("Введите число: "))
+                break
+            except ValueError:
+                print("Invalid")
+    else:
 
-    if operation == "11":
-        print("Выход из программы")
+        if operation == "11":
+         print("Бай бай")
         return
 
-    elif operation in ['1', '2', '3', '4']:
-        pervoyechislo= float(input("Первое число:"))
-        vtoroyechislo= float(input("Второе число:"))
-
-        if operation == '1':
-            result = pervoyechislo + vtoroyechislo
-            print("Результат:", result)
-        elif operation == '2':
-            result = pervoyechislo - vtoroyechislo
-            print("Результат:",result)
-        elif operation == '3':
-            result = pervoyechislo * vtoroyechislo
-            print("Результат:",result)
-        elif operation == '4':
-            if vtoroyechislo == 0:
-                print("Результат:делить на ноль нельзя")
-            else:
-                result = pervoyechislo / vtoroyechislo
-                print("Результат:",result)
-    elif operation == '5':
-        pervoyechislo= float(input("Введите число: "))
-        stepen = float(input("Введите степень: "))
-        result = pervoyechislo ** stepen
+    if operation == '1':
+        result = number1 + number2
         print("Результат: ", result)
+
+    elif operation == '2':
+        result = number1 - number2
+        print("Результат: ", result)
+
+    elif operation == '3':
+        result = number1 * number2
+        print("Результат: ", result)
+
+    elif operation == '4':
+        if number2 == 0:
+            print("Ошибка: деление на 0 недопустимо")
+        else:
+            result = number1 / number2
+            print("Результат: ", result)
+
+    elif operation == '5':
+
+        result = number1 ** number2
+        print("Результат: ", result)
+
     elif operation == '6':
-        number = float(input("Введите число: "))
+
         if number < 0:
-            print("Ошибка: отрицательное число")
+            print("Ошибка: квадратный корень из отрицательного числа недопустим")
         else:
             result = math.sqrt(number)
             print("Результат: ", result)
+
     elif operation == '7':
-        number = int(input("Введите число: "))
-        result = 1
-        if number < 0:
-            print("Отрицательное число")
+        if number< 0:
+            print("Ошибка: факториал отрицательного числа недопустим")
         else:
-            for i in range(1, number + 1):
-                result *= i
+            result = math.factorial(number)
             print("Результат: ", result)
-    elif operation in ['8', '9', '10']:
-        angle = math.radians(float(input("Введите угол в градусах: ")))
-        if operation == '8':
-            result = math.sin(angle)
-            print("Результат: ", result)
-        elif operation == '9':
-            result = math.cos(angle)
-            print("Результат: ", result)
-        elif operation == '10':
-            result = math.tan(angle)
-            print("Результат: ", result)
+
+    elif operation == '8':
+
+        result = math.sin(math.radians(number))
+        print("Результат: ", result)
+
+    elif operation == '9':
+
+        result = math.cos(math.radians(number))
+        print("Результат: ", result)
+
+    elif operation == '10':
+
+        result = math.tan(math.radians(number))
+        print("Результат: ", result)
+
     else:
-        print("Некорректный номер операции")
+        print("Ошибка: некорректный номер операции")
 
     print("\n")
     calculator()
